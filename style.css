@@ -15,7 +15,7 @@
     color: var(--cor-texto);
     background-color: var(--cor-fundo);
     padding: 0;
-    margin: 0;
+    margin: 100px;
   }
   
   /* Estilo do cabeçalho */
