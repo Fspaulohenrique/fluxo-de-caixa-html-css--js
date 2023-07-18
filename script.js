@@ -1,8 +1,7 @@
 // Array para armazenar os lançamentos
 let lancamentos = [];
 
-// Função para adicionar lançamentos
-function adicionarLacamento(lancamentos) {
+function adicionarLacamento() {
   // Pega os valores do formulário
   const descricao = document.getElementById("descricao").value;
   const valor = parseFloat(document.getElementById("valor").value);
@@ -24,50 +23,42 @@ function adicionarLacamento(lancamentos) {
   document.getElementById("tipo").selectedIndex = 0;
 
   // Chama a função para atualizar a tabela e o saldo total
-  atualizarTabela(lancamentos);
+  atualizarTabela();
 }
 
 // Função para atualizar a tabela de lançamentos e o saldo total
-function atualizarTabela(lancamentos) {
+function atualizarTabela() {
   // Pega a tabela e o elemento de saldo total
   const tabela = document.getElementById("registro");
   const saldoTotal = document.getElementById("saldo");
 
-  // Limpa a tabela
-  tabela.innerHTML = "";
+  // Limpa o conteúdo da tabela, mantendo a linha de cabeçalho
+  while (tabela.rows.length > 1) {
+    tabela.deleteRow(1);
+  }
 
   // Variáveis para calcular o saldo total
   let saldo = 0;
-  let receitas = 0;
-  let despesas = 0;
 
   // Loop pelos lançamentos
   for (let i = 0; i < lancamentos.length; i++) {
     // Cria uma nova linha na tabela
-    const linha = document.createElement("tr");
+    const linha = tabela.insertRow();
 
     // Adiciona as células com os valores do lançamento
-    const descricaoCelula = document.createElement("td");
+    const descricaoCelula = linha.insertCell();
     descricaoCelula.textContent = lancamentos[i].descricao;
-    linha.appendChild(descricaoCelula);
 
-    const valorCelula = document.createElement("td");
+    const valorCelula = linha.insertCell();
     valorCelula.textContent = "R$ " + lancamentos[i].valor.toFixed(2);
-    linha.appendChild(valorCelula);
 
-    const tipoCelula = document.createElement("td");
+    const tipoCelula = linha.insertCell();
     tipoCelula.textContent = lancamentos[i].tipo;
-    linha.appendChild(tipoCelula);
 
-    // Adiciona a linha à tabela
-    tabela.appendChild(linha);
-
-    // Atualiza as variáveis de saldo total
-    if (lancamentos[i].tipo === "receita") {
-      receitas += lancamentos[i].valor;
+    // Atualiza a variável de saldo total
+    if (lancamentos[i].tipo === "Receita") {
       saldo += lancamentos[i].valor;
     } else {
-      despesas += lancamentos[i].valor;
       saldo -= lancamentos[i].valor;
     }
   }
