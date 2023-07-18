@@ -1,7 +1,7 @@
 // Array para armazenar os lançamentos
 let lancamentos = [];
 
-function adicionarLacamento() {
+function adicionarLancamento() {
   // Pega os valores do formulário
   const descricao = document.getElementById("descricao").value;
   const valor = parseFloat(document.getElementById("valor").value);

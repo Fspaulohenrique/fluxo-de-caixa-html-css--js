@@ -1,0 +1,41 @@
+@media (max-width: 600px) {
+    /* Estilos para dispositivos móveis */
+  
+    .container {
+      padding: 10px;
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  
+    form {
+      flex-direction: column;
+    }
+  
+    .label-descricao,
+    .label-valor {
+      text-align: left;
+    }
+  
+    .input-descricao,
+    .input-valor,
+    .select-tipo {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .botao-enviar {
+      width: 100%;
+    }
+  
+    table {
+      font-size: 0.8rem;
+    }
+  
+    #saldo {
+      font-size: 1rem;
+    }
+  }
+  
